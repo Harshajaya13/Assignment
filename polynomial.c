@@ -1,4 +1,6 @@
 /*
+ i am in a high moment,let's see how far this problem will be solved
+
  Implement a singly linked list to represent a polynomial (each node stores
 coefficient and exponent). that means it is a polynomial it can be like
 ax^2+bx^3-cx^4 or 6x^3+7x^2+8x^6
@@ -72,9 +74,174 @@ writing the extra code 😭 i dont expect that, but the code i write,isnt at all
 wasted , it is used when we want to change the coef and the expo even after the
 declaring that  single misunderstanding made me write the extra piece not it
 feels like , i am the one who made it a drag ,not the insert 🤧
+*/
+
+
+/*
+ first to write a function to add the linked lists and results in a linked list
+
+first we have added the linked list
+now another list have to taken , like
+let me clarify
+suppose  a function is there in which the addition of the two ll is gonna work
+so that we can include that in the main and we can call that
+this is the primary to do
+like the linked lists have to be added in the sense like the coefficinets of the
+same power are added this is the addition of the linked list what he have called
+addition and next when it comes to the linked list of the polynomial addition
+then like,when we insert something if it is of the same power we have to add
+those and the only thing  i have to do is the taking two seperate functions and
+then calling in the part we need
+
+int add() so that
+in this we will use the insert function like to call this in the insert so that
+like with a question of two polynomials are like i will call twice and then
+after that we can easily add the coeff lets try like this
+
+the only inserting process is happeing in the main that too the insert is called
+in the main what if i use an extra case in that writing the insert twice it
+would ask the user for the insertion of the twice so two polynomials are getting
+
+
+consider this in a case 5
+int addition() {
+  insert(h,v);
+  insert(h,v);
+this is like the first ,creation of the polynomial is done ,
+like it would ask the questions related to the insertion only
+so the two poly will come to the life and next the addition has to take place
+like the poly 1 and poly 2 are declared in the output as we question the user
+and what next is storing the poly in the another container where we are trying
+to perform the operation here it is like the same powers will do the addition
+and the coeffiients can be any
+
+i think this is a drag,to use in the insert
+actually the inserted polynomial has to be saved
+how can the previous linked list vales are saved then when i say display
+then it means i have to target the display to get the entire polynomial there
+and then calling
+
+so now it is like targeting the display then, it is like target the
+display(poly1,n1) and then we get the value of the poly 1 and the n1 tbh the
+poly1 is necessary that n1 is useless cause we alreadyhave the temp data and the
+temp data is the poly1 itself why the extra variable n1
+
+so i have called the display
+two times in the case 5 and now the magical wizard too that is the greatest
+creation that it handles the both entering of the poly and the add of the poly
+there but it is like for a normal person it is a random stick for a wizard it is
+a magical stcik so even thoug display(int p) it has it cant be used unless it
+uses the wizard key there that only happens in the case 5 not in the cas3 so it
+i not a problem
+in the display it is like
+as we have used the while condition to traverse the temp and same happens like
+the traversed one is the poly 1 ,and now we get the poly 1 directly
+
+wait a min again we are out of the track
+first we have to do the temp traverse
+ok, for the first round it is the poly and for the second it is poly2
+now,what next is
+we have gave the display two times instead i have gave gave the insert two times
+cause the user might choose this case as the printing of the two seperate ones
+from the initial so tw inserts in the insert we have to use the wizard so the
+single wizard is used and then the insert and the display are using the wizrd
+for sure this is
+
+well all i was saying is the when we call the display(poly) it is not needed to
+save the values there so case 5 insert is only at the end no more values at all
+so it goes so simple and the values are given to the poly 1 and poly 2 now the
+display is like comes to the work when it is poly1 then it is the display of the
+poly 1 if not then it is the display of the poy2 just like how things have gone
+with the display of the ll before so that wizard ives the one we need
+
+no, we use the if(wizard){
+then we use the
+if of the poly 1 so that the poly one is inserted at the condition we take fro
+the insertion same for the poly 2 too now the insertion part is over as they are
+created and now the real drag is how we use the display for the ll same we use
+for the wizard too
+
+why we used the poly
+that means it is a struct so it stores the polynomial too
+thats why for the wizard we have taken the struct
+again it is a drag
+what i have said in the start is
+we use the if condition for the printing of the + and the - like using the both
+wizard and the normal ones too so that it will work out for the signs too then
+when it comes to printing the numbers take them into the wiard and then we can
+print how we traversed in the start and now the poly comes thats it so
+
+the n1 is the one which saves the poly 1 so the poly1 is saved in the n1 and the
+n2 issimilar if we perform the adition and then check the values of the power
+and coeff then it is like helps us to add the part only we need ignore others so
+no need to use the array and make it complicated
+
+ok all i was saying is
+insert poly 1 and the n1
+so case 1 is only one polynomial no need to add the other and also i wont even
+bother anywhere it just goes like why did you even called me when you dont have
+any use with me and the next part is the insert twice now it is like a bit messy
+i have to handle like how did i save the n1 from the poly 1 that means i have to
+write the code in the insert but that only printed when the case 5 is called
+like it only saves the case 5
+and now the addition process is going to take place
+
+ now i will use the %d in the printf of the question so 1 and 2 polynomials
+comes to the life now all i have to do is the i cant create a function inside a
+fucntion in c better writing code outside is hard wait a min, like how about the
+if condition so what will i use in the if condition is that related to the
+something like a boolean like if with the true only that means calling in the
+
+
+case5 we use the bool of the true and give to the if now only the bool will help
+to get the case 5 it is like  a key to the magical door now the headache is
+clearred now assing the poly 1 to the n1 and n2 , like using the bool
+wizard_bool = true;
+in the case 5
+so if condition in the insert is(wizard_bool){
+now it is like saving the n1 and n2 in the polynomial
+as i ahve gave the insert with the insert(poly1 and n1) now its time to save the
+poly 1 in te n1 and the addition is like comparing the powers of thr coeff and
+then the ifs
+
+no need to take the input as the input goes to the start not a problem
+only collect the output
+that's what i am saying from the start
+you don't need to collect the input, just the output is enough
+for me , it has to collect only the output
+as it displays the outpiut just like how it displays for the non wizard ones
+i want to do is the output taker
+but the problem is why not this is like shifting directly to the polynomial 2
+cant even waiting for the user to insert some more terms too
+
+in the bottom we have took the display (head) the head wants a pointer
+temp = head; that means for the start case the head is start for the polynomial
+addition it is the poly1 or poly 2 which we have declared
+
+this is so easy and flexile with what ever you gives the  type either start or
+the poly
+
+
+
 
 */
 
+/*
+now it is the process of the adding of the code like the functionaliy and all
+like taking a function add and then adding the all the same expo to the sum and
+left remaining for that i have create a function add and then as the poly 1 and
+the poly2 are globally dclared i can use the anywhere i want so it is like
+usieng them for the addition and comparing if they ave the same power terms if
+yes depends on the sign it takes it work
+
+after many attempts i have realised that the wizard id good but its implementation is not that good,but better way of thinking it 
+then it comes to the play
+
+
+  */
+
+
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -85,9 +252,13 @@ struct node {
 };
 struct node *start = NULL, *end = NULL;
 
-int insert(int h, int v) {
-  int opt, pos, i = 1, data;
+struct node *poly1 = NULL;
+struct node *poly2 = NULL;
+struct node *harsha = NULL; // declared at top of file
 
+int insert() {
+  int opt, pos, i = 1, data;
+  int h, v;
   printf("enter the value of the coefficient: ");
   scanf("%d", &h);
 
@@ -148,6 +319,7 @@ int insert(int h, int v) {
       break;
     }
   }
+
   return 0;
 }
 
@@ -215,21 +387,21 @@ int delete() {
   return 0;
 }
 
-int display() {
-  struct node *temp = start;
-  if (start == NULL) {
+int display(struct node *head) {  // this is the most important of the all 
+  struct node *temp = head;  // as the head is changes , like if it uses the poly poly comes or the start comes depends on the case
+  if (temp == NULL) {
     printf("list is empty");
     return 0;
   }
   while (temp != NULL) {
 
-    if (temp->co >= 0 && temp != start) {
-      printf(" + ");
+    if (temp->co >= 0 && temp != head) { // this ensures the starting + wont be created
+      printf(" + "); 
     } else if (temp->co < 0) {
       printf(" - ");
     }
 
-    if (temp->ex == 0) {
+    if (temp->ex == 0) {           // this is like x^0 as to be 1
       printf("%d", abs(temp->co));
     } else if (temp->ex == 1) {
       printf("%dx", abs(temp->co));
@@ -237,6 +409,88 @@ int display() {
       printf("%dx^%d", abs(temp->co), temp->ex);
     }
     temp = temp->next;
+  }
+  return 0;
+}
+
+int add() {
+
+  while (poly1 != NULL && poly2 != NULL) {
+
+    if (poly1->ex == poly2->ex) { // here we see the equal coefficients
+      printf("%dx^%d", poly1->co + poly2->co, poly1->ex);
+      poly1 = poly1->next;
+      poly2 = poly2->next; // moving to see the next one
+
+    } else if (poly1->ex > poly2->ex) {    // now we have to print the reamaing ones also so that they will print in the desecending order
+      printf("%dx^%d", poly1->co, poly1->ex);
+      poly1 = poly1->next;
+      if (poly1 != NULL || poly2 != NULL) // this is crucial to insert the + sign
+        printf(" + ");
+    } else {
+      printf("%dx^%d", poly2->co, poly2->ex);
+      poly2 = poly2->next;
+      if (poly1 != NULL || poly2 != NULL)
+        printf(" + ");
+    }
+  }
+
+  while (poly1 != NULL) {     // if they havent matched then we have to print all
+    printf("%dx^%d", poly1->co, poly1->ex);
+    poly1 = poly1->next;
+    printf(" + ");
+  }
+
+  while (poly2 != NULL) {
+    printf("%dx^%d", poly2->co, poly2->ex);
+    poly2 = poly2->next;
+    printf(" + ");
+  }
+
+  return 0;
+}
+
+int result(int coef, int expo) {
+  struct node *term = malloc(
+      sizeof(struct node)); // term is like new node which we have created
+  term->co = coef;
+  term->ex = expo; // term is tha storage box
+  term->next = NULL;
+
+  if (harsha == NULL) { // harsha is the start of the folder that result stores
+    harsha = term;
+  } else {
+    struct node *ptr = harsha; // the ptr is the one which is like temp
+    while (ptr->next != NULL)
+      ptr = ptr->next;
+    ptr->next = term;
+  }
+
+  // Merge like terms
+  struct node *temp = harsha, *runner;
+  while (temp != NULL) {
+    runner = temp->next;
+    while (runner != NULL) {
+      if (runner->ex == temp->ex) {
+        temp->co += runner->co;
+        runner->co = 0;
+      }
+      runner = runner->next;
+    }
+    temp = temp->next;
+  }
+
+  return 0;
+}
+
+int multiplication() {
+
+  for (struct node *p1 = poly1; p1 != NULL; p1 = p1->next) {
+    for (struct node *p2 = poly2; p2 != NULL; p2 = p2->next) {
+      int coef = p1->co * p2->co;
+      int expo = p1->ex * p2->ex;
+      result(coef, expo);
+    }
   }
   return 0;
 }
@@ -265,28 +519,103 @@ int main() {
   int data, opt, key, h, v;
   do {
     printf("\nenter the operation : \n1.insert \n"
-           "2.delete\n3.display\n4.search\n5.exit");
+           "2.delete\n3.display\n4.search\n5.Add two polynomials\n6.Multiply "
+           "two polynomials\7.exit");
     scanf("%d", &opt);
     switch (opt) {
     case 1:
-      insert(h, v);
+      insert();
       break;
     case 2:
       delete();
       break;
     case 3:
-      display();
+      display(start);
       break;
     case 4:
       search();
       break;
+
     case 5:
+
+      // Polynomial 1
+      start = NULL;
+      end = NULL;
+      printf("Enter Polynomial 1:\n");
+      int cont = 1;
+      while (cont) {
+        insert();
+        printf("Add more terms to Polynomial 1? (1 = yes, 0 = no): ");
+        scanf("%d", &cont);
+      }
+      poly1 = start;
+
+      // Polynomial 2
+      start = NULL; // we have to initialise it to the null so that we can re use the second polynomial
+      end = NULL;
+      printf("Enter Polynomial 2:\n");
+      cont = 1;
+      while (cont) {
+        insert();
+        printf("Add more terms to Polynomial 2? (1 = yes, 0 = no): ");
+        scanf("%d", &cont);
+      }
+      poly2 = start;
+      printf("Polynomial 1: ");
+      display(poly1);
+
+      printf("\nPolynomial 2: ");
+      display(poly2);
+      printf("\n");
+      add();
+      break;
+
+    case 6:
+      // Reset result list before multiplication
+      harsha = NULL;
+
+      // Input polynomials
+      start = NULL;
+      end = NULL;
+      printf("Enter Polynomial 1:\n");
+      while (cont) {
+        insert();
+        printf("Add more terms to Polynomial 1? (1 = yes, 0 = no): ");
+        scanf("%d", &cont);
+      }
+      poly1 = start; // this is important step we can see in the display function
+
+      start = NULL;
+      end = NULL;
+      printf("Enter Polynomial 2:\n");
+      cont = 1;
+      while (cont) {
+        insert();
+        printf("Add more terms to Polynomial 2? (1 = yes, 0 = no): ");
+        scanf("%d", &cont);
+      }
+      poly2 = start;
+
+      // Display input
+      printf("Polynomial 1: ");
+      display(poly1);
+      printf("\nPolynomial 2: ");
+      display(poly2);
+      printf("\n");
+
+      // Multiply and display result
+      multiplication();
+      printf("Multiplication Result: ");
+      display(harsha);
+      printf("\n");
+      break;
+    case 7:
       printf("exit");
       break;
     default:
       printf("invalid choice");
       break;
     }
-  } while (opt != 5);
+  } while (opt != 7);
   return 0;
 }
