@@ -76,7 +76,6 @@ declaring that  single misunderstanding made me write the extra piece not it
 feels like , i am the one who made it a drag ,not the insert 🤧
 */
 
-
 /*
  first to write a function to add the linked lists and results in a linked list
 
@@ -234,17 +233,82 @@ the poly2 are globally dclared i can use the anywhere i want so it is like
 usieng them for the addition and comparing if they ave the same power terms if
 yes depends on the sign it takes it work
 
-after many attempts i have realised that the wizard id good but its implementation is not that good,but better way of thinking it 
-then it comes to the play
-
-
+after many attempts i have realised that the wizard id good but its
+implementation is not that good,but better way of thinking it then it comes to
+the play
   */
 
+/*
+ well
+for the array addition of the polynomial and the array multiplcation of the
+polynomial we have to declare them too instead we can continue with the previou
+ones we have , its simple though , just it has two inner cases either add ot
+multiply if that comes out of bounds that the user try to over react and
+directly gets to the array add and multiply then i will say first define them
+using the case 5 conditions on how we get the polynomial 1 and 2 and then we can
+perorm the add or mul
+
+see this we can add the case 8 as the array adddition of the polynomial and the
+array multiplication of the polynomial i dont think there is a big differences
+for the user on how he uses the polynomial input as we use the poly1 and 2 that
+too they are the same as the flow type when thyey enter it i mean there is not a
+specific difference in how the user sees it all all changes in the background
+then what is the real purpose
+
+as you see in the case 5 of mine
+initaily start and end are the null so that the list becomes empty if at all any
+revoius ones are left and the next ones like poly1 = start, cause in the display
+temp = head;as we call the display(poly1) so the poly1 is the start and the list
+starts that was ok but how can the list knoe the polynomial we enter is the
+first one is comes from he staring of the list if the lsit is empty start is the
+new one so we are going there and then the work starts to print each ones that
+was ok, why would the insert at start dont work as like the polynomial defining
+as the the insert one inserts at the first place but here the polynomial every
+terms directly comes beside each other just the display is making that ok well
+this is like when we are making the start null and the temp comes to the role
+and then it shifts to the other one,so this all comes from the starting if
+condition??
+that means , till now i felt that the if condition is just for the use if there
+is any list empty so that it is like works , but i have realised its value,but
+that if condiition is in the insert how can it is used without the case 1
+
+for all the questions the answer itself is the calling of the insert() vecause
+in the insert calling we are using it for the taking the values by seeing the
+start is null or not if yes the new node will be the start
+
+i will create a new insertarr function so that
+it prints like
+the %d %d arr[coef][exp] so that it feels like the user is entering them into
+the array or else i can do one thing an wizard boolean so that it will only
+access the print of the array in the insert one so no nee to write another
+function just the condition for the start npde and the taking of the coeffiients
+and al or writing a new function is better as i always wanted to make it like a
+magic by taking the bool and goes only for the valid ones like thatpreviously i
+thought of the wizard at the insert function as it is like takes me to the
+conclusion after writing the code like poly1 ad all instead of taking the wizard
+call the insert wholely so i came to understand the insert value,but this time i
+have to use,but thinking what to use lets see what i will prefer for
+
+no no, actually the size is the long long int
+and now i want to take the arrays, in the two d, how can the size is measured
+even like when we take the arrays size to use the loop for thst msny times so
+what next to do and also i was saying is once the two are added the merging is
+not that tough the twod arrays the poly1->co = r poly1->ex = c this is what it
+is for adding it and now result is also stored only if the expo are matching in
+not they all comes to the new line thats it why so much bigger code
+
+no, all i want to do is the array ones wait a min when do like this why nit the
+answr come i will stik with my plan i will say all just help me with that all i
+am saying is the the users enter the polynomial and now take the coef and the
+array in to the arrays and now the result is the merge of the two as we are
+taking them into the arrays we can know how much we are taking now say isnt this
+possible
+*/
 
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#define MAX_EXP 1000
 struct node {
   int co;
   int ex;
@@ -255,71 +319,81 @@ struct node *start = NULL, *end = NULL;
 struct node *poly1 = NULL;
 struct node *poly2 = NULL;
 struct node *harsha = NULL; // declared at top of file
-
+// this is for the entire new arrays
+int poly1_arr[MAX_EXP] = {0};
+int poly2_arr[MAX_EXP] = {0};
+int result_arr[MAX_EXP] = {0};
+// this above code is handled with care
+bool wizard_mode = false;
 int insert() {
   int opt, pos, i = 1, data;
   int h, v;
-  printf("enter the value of the coefficient: ");
-  scanf("%d", &h);
-
-  printf("enter the value of the exponent: ");
-  scanf("%d", &v);
-
-  printf("Enter where to insert: 1.start \t 2.end \t 3.position: ");
-  scanf("%d", &opt);
-  struct node *new_node = (struct node *)malloc(sizeof(struct node)),
-              *temp = start;
-  new_node->co = h;
-  new_node->ex = v;
-  new_node->next = NULL;
-
-  if (start == NULL) {
-    start = new_node;
-    end = new_node;
-    return 0;
+  if (wizard_mode) {
+    printf("Enter term as arr[coef][exp]: ");
+    scanf("%d %d", &h, &v);
   } else {
-    switch (opt) {
-    case 1:
-      new_node->next = start;
-      // new_node->co = h;
-      // new_node->ex = v;
+
+    printf("enter the value of the coefficient: ");
+    scanf("%d", &h);
+
+    printf("enter the value of the exponent: ");
+    scanf("%d", &v);
+
+    printf("Enter where to insert: 1.start \t 2.end \t 3.position: ");
+    scanf("%d", &opt);
+    struct node *new_node = (struct node *)malloc(sizeof(struct node)),
+                *temp = start;
+    new_node->co = h;
+    new_node->ex = v;
+    new_node->next = NULL;
+
+    if (start == NULL) {
       start = new_node;
-      break;
-
-    case 2:
-      end->next = new_node;
-      // new_node->co = h;
-      // new_node->ex = v;
       end = new_node;
-      break;
-
-    case 3:
-      printf("enter the position you want to insert");
-      scanf("%d", &pos);
-      if (pos == 1) {
+      return 0;
+    } else {
+      switch (opt) {
+      case 1:
         new_node->next = start;
         // new_node->co = h;
         // new_node->ex = v;
         start = new_node;
         break;
-      } else {
-        temp = start;
-        while (temp->next != NULL && i != pos - 1) {
-          temp = temp->next;
-          i++;
-        }
+
+      case 2:
+        end->next = new_node;
         // new_node->co = h;
         // new_node->ex = v;
-        new_node->next = temp->next;
-        temp->next = new_node;
+        end = new_node;
+        break;
+
+      case 3:
+        printf("enter the position you want to insert");
+        scanf("%d", &pos);
+        if (pos == 1) {
+          new_node->next = start;
+          // new_node->co = h;
+          // new_node->ex = v;
+          start = new_node;
+          break;
+        } else {
+          temp = start;
+          while (temp->next != NULL && i != pos - 1) {
+            temp = temp->next;
+            i++;
+          }
+          // new_node->co = h;
+          // new_node->ex = v;
+          new_node->next = temp->next;
+          temp->next = new_node;
+        }
+        break;
+      default:
+        printf("Invalid choice");
+        break;
       }
-      break;
-    default:
-      printf("Invalid choice");
-      break;
     }
   }
-
   return 0;
 }
 
@@ -387,21 +461,21 @@ int delete() {
   return 0;
 }
 
-int display(struct node *head) {  // this is the most important of the all 
-  struct node *temp = head;  // as the head is changes , like if it uses the poly poly comes or the start comes depends on the case
+int display(struct node *head) {
+  struct node *temp = head;
   if (temp == NULL) {
     printf("list is empty");
     return 0;
   }
   while (temp != NULL) {
 
-    if (temp->co >= 0 && temp != head) { // this ensures the starting + wont be created
-      printf(" + "); 
+    if (temp->co >= 0 && temp != head) {
+      printf(" + ");
     } else if (temp->co < 0) {
       printf(" - ");
     }
 
-    if (temp->ex == 0) {           // this is like x^0 as to be 1
+    if (temp->ex == 0) {
       printf("%d", abs(temp->co));
     } else if (temp->ex == 1) {
       printf("%dx", abs(temp->co));
@@ -412,20 +486,84 @@ int display(struct node *head) {  // this is the most important of the all
   }
   return 0;
 }
+int addArr() {
+  for (int i = 0; i < MAX_EXP; i++) {
+    result_arr[i] = poly1_arr[i] + poly2_arr[i];
+  }
+
+  printf("Array-based Addition Result: ");
+  for (int i = MAX_EXP - 1; i >= 0; i--) {
+    if (result_arr[i] != 0) {
+      if (i == 0)
+        printf("%d", result_arr[i]);
+      else if (i == 1)
+        printf("%dx", result_arr[i]);
+      else
+        printf("%dx^%d", result_arr[i], i);
+
+      if (i > 0)
+        printf(" + ");
+    }
+  }
+  printf("\n");
+  return 0;
+}
+
+int multiplyArr() {
+  for (int i = 0; i < MAX_EXP; i++) {
+    for (int j = 0; j < MAX_EXP; j++) {
+      result_arr[i + j] += poly1_arr[i] * poly2_arr[j];
+    }
+  }
+
+  printf("Array-based Multiplication Result: ");
+  for (int i = MAX_EXP - 1; i >= 0; i--) {
+    if (result_arr[i] != 0) {
+      if (i == 0)
+        printf("%d", result_arr[i]);
+      else if (i == 1)
+        printf("%dx", result_arr[i]);
+      else
+        printf("%dx^%d", result_arr[i], i);
+
+      if (i > 0)
+        printf(" + ");
+    }
+  }
+  printf("\n");
+  return 0;
+}
+
+void convertToArray(struct node *poly, int poly_arr[MAX_EXP]) {
+  for (int i = 0; i < MAX_EXP; i++) {
+    poly_arr[i] = 0;
+  }
+  struct node *temp = poly;
+  while (temp != NULL) {
+    poly_arr[temp->ex] += temp->co;
+    temp = temp->next;
+  }
+}
+
+void reset_arrays() {
+  for (int i = 0; i < MAX_EXP; i++) {
+    poly1_arr[i] = 0;
+    poly2_arr[i] = 0;
+    result_arr[i] = 0;
+  }
+}
 
 int add() {
 
   while (poly1 != NULL && poly2 != NULL) {
-
-    if (poly1->ex == poly2->ex) { // here we see the equal coefficients
+    if (poly1->ex == poly2->ex) {
       printf("%dx^%d", poly1->co + poly2->co, poly1->ex);
       poly1 = poly1->next;
-      poly2 = poly2->next; // moving to see the next one
-
-    } else if (poly1->ex > poly2->ex) {    // now we have to print the reamaing ones also so that they will print in the desecending order
+      poly2 = poly2->next;
+    } else if (poly1->ex > poly2->ex) {
       printf("%dx^%d", poly1->co, poly1->ex);
       poly1 = poly1->next;
-      if (poly1 != NULL || poly2 != NULL) // this is crucial to insert the + sign
+      if (poly1 != NULL || poly2 != NULL)
         printf(" + ");
     } else {
       printf("%dx^%d", poly2->co, poly2->ex);
@@ -435,7 +573,7 @@ int add() {
     }
   }
 
-  while (poly1 != NULL) {     // if they havent matched then we have to print all
+  while (poly1 != NULL) {
     printf("%dx^%d", poly1->co, poly1->ex);
     poly1 = poly1->next;
     printf(" + ");
@@ -488,7 +626,7 @@ int multiplication() {
   for (struct node *p1 = poly1; p1 != NULL; p1 = p1->next) {
     for (struct node *p2 = poly2; p2 != NULL; p2 = p2->next) {
       int coef = p1->co * p2->co;
-      int expo = p1->ex * p2->ex;
+      int expo = p1->ex + p2->ex;
       result(coef, expo);
     }
   }
@@ -520,7 +658,8 @@ int main() {
   do {
     printf("\nenter the operation : \n1.insert \n"
            "2.delete\n3.display\n4.search\n5.Add two polynomials\n6.Multiply "
-           "two polynomials\7.exit");
+           "two polynomials\n7.Addition of two arrasy\n8.Multiplication of two "
+           "arrays\n9.exit");
     scanf("%d", &opt);
     switch (opt) {
     case 1:
@@ -542,23 +681,23 @@ int main() {
       start = NULL;
       end = NULL;
       printf("Enter Polynomial 1:\n");
-      int cont = 1;
-      while (cont) {
+      int choice = 1;
+      while (choice) {
         insert();
         printf("Add more terms to Polynomial 1? (1 = yes, 0 = no): ");
-        scanf("%d", &cont);
+        scanf("%d", &choice);
       }
       poly1 = start;
 
       // Polynomial 2
-      start = NULL; // we have to initialise it to the null so that we can re use the second polynomial
+      start = NULL;
       end = NULL;
       printf("Enter Polynomial 2:\n");
-      cont = 1;
-      while (cont) {
+      choice = 1;
+      while (choice) {
         insert();
         printf("Add more terms to Polynomial 2? (1 = yes, 0 = no): ");
-        scanf("%d", &cont);
+        scanf("%d", &choice);
       }
       poly2 = start;
       printf("Polynomial 1: ");
@@ -578,21 +717,22 @@ int main() {
       start = NULL;
       end = NULL;
       printf("Enter Polynomial 1:\n");
-      while (cont) {
+      choice = 1;
+      while (choice) {
         insert();
         printf("Add more terms to Polynomial 1? (1 = yes, 0 = no): ");
-        scanf("%d", &cont);
+        scanf("%d", &choice);
       }
-      poly1 = start; // this is important step we can see in the display function
+      poly1 = start;
 
       start = NULL;
       end = NULL;
       printf("Enter Polynomial 2:\n");
-      cont = 1;
-      while (cont) {
+      choice = 1;
+      while (choice) {
         insert();
-        printf("Add more terms to Polynomial 2? (1 = yes, 0 = no): ");
-        scanf("%d", &cont);
+        printf("Add more terms to Polynomial 2? (1 = yes, 0 = no):");
+        scanf("%d", &choice);
       }
       poly2 = start;
 
@@ -609,13 +749,91 @@ int main() {
       display(harsha);
       printf("\n");
       break;
+
     case 7:
+      // for  array 1
+      start = NULL;
+      end = NULL;
+      printf("enter the polynomial 1 :");
+      choice = 1;
+      while (choice) {
+        insert();
+        printf("Add more terms to the array[] 1? (1 = yes , 0= no):");
+        scanf("%d", &choice);
+      }
+      poly1 = start;
+
+      // for array
+      start = NULL;
+      end = NULL;
+      printf("enter the polynomil 2 :");
+      choice = 1;
+      while (choice) {
+        insert();
+        printf("Add more terms to the array[] 2? (1 = yes , 0= no):");
+        scanf("%d", &choice);
+      }
+      poly2 = start;
+
+      printf("Polynomial 1: ");
+      display(poly1);
+
+      printf("\nPolynomial 2: ");
+      display(poly2);
+      printf("\n");
+      reset_arrays();
+      convertToArray(poly1, poly1_arr);
+      convertToArray(poly2, poly2_arr);
+
+      addArr();
+      break;
+
+    case 8:
+      // for  array 1
+      wizard_mode = true;
+      start = NULL;
+      end = NULL;
+      printf("enter the polynomial 1 :");
+      choice = 1;
+      while (choice) {
+        insert();
+        printf("Add more terms to the array[] 1? (1 = yes , 0= no):");
+        scanf("%d", &choice);
+      }
+      poly1 = start;
+
+      // for array
+      start = NULL;
+      end = NULL;
+      printf("enter the polynomil 2 :");
+      choice = 1;
+      while (choice) {
+        insert();
+        printf("Add more terms to the array[] 2? (1 = yes , 0= no):");
+        scanf("%d", &choice);
+      }
+      poly2 = start;
+
+      printf("Polynomial 1: ");
+      display(poly1);
+
+      printf("\nPolynomial 2: ");
+      display(poly2);
+      printf("\n");
+      reset_arrays();
+      convertToArray(poly1, poly1_arr);
+      convertToArray(poly2, poly2_arr);
+
+      multiplyArr();
+      break;
+
+    case 9:
       printf("exit");
       break;
     default:
       printf("invalid choice");
       break;
     }
-  } while (opt != 7);
+  } while (opt != 9);
   return 0;
 }
