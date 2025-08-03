@@ -322,17 +322,19 @@ struct node *harsha = NULL; // declared at top of file
 // this is for the entire new arrays
 int poly1_arr[MAX_EXP] = {0};
 int poly2_arr[MAX_EXP] = {0};
-int result_arr[MAX_EXP] = {0};
+int result_arr[MAX_EXP * 2] = {0};
 // this above code is handled with care
 bool wizard_mode = false;
 int insert() {
-  int opt, pos, i = 1, data;
+  int opt = 2; // Default to inserting at the end
+  int pos, i = 1;
   int h, v;
+
   if (wizard_mode) {
     printf("Enter term as arr[coef][exp]: ");
     scanf("%d %d", &h, &v);
+    // In wizard_mode, we automatically insert at the end.
   } else {
-
     printf("enter the value of the coefficient: ");
     scanf("%d", &h);
 
@@ -341,62 +343,52 @@ int insert() {
 
     printf("Enter where to insert: 1.start \t 2.end \t 3.position: ");
     scanf("%d", &opt);
-    struct node *new_node = (struct node *)malloc(sizeof(struct node)),
-                *temp = start;
-    new_node->co = h;
-    new_node->ex = v;
-    new_node->next = NULL;
+  }
 
-    if (start == NULL) {
+  // This logic is now shared by both modes
+  struct node *new_node = (struct node *)malloc(sizeof(struct node));
+  new_node->co = h;
+  new_node->ex = v;
+  new_node->next = NULL;
+
+  if (start == NULL) {
+    start = new_node;
+    end = new_node;
+    return 0;
+  }
+
+  switch (opt) {
+  case 1:
+    new_node->next = start;
+    start = new_node;
+    break;
+  case 2:
+    end->next = new_node;
+    end = new_node;
+    break;
+  case 3:
+    printf("enter the position you want to insert");
+    scanf("%d", &pos);
+    if (pos == 1) {
+      new_node->next = start;
       start = new_node;
-      end = new_node;
-      return 0;
     } else {
-      switch (opt) {
-      case 1:
-        new_node->next = start;
-        // new_node->co = h;
-        // new_node->ex = v;
-        start = new_node;
-        break;
-
-      case 2:
-        end->next = new_node;
-        // new_node->co = h;
-        // new_node->ex = v;
-        end = new_node;
-        break;
-
-      case 3:
-        printf("enter the position you want to insert");
-        scanf("%d", &pos);
-        if (pos == 1) {
-          new_node->next = start;
-          // new_node->co = h;
-          // new_node->ex = v;
-          start = new_node;
-          break;
-        } else {
-          temp = start;
-          while (temp->next != NULL && i != pos - 1) {
-            temp = temp->next;
-            i++;
-          }
-          // new_node->co = h;
-          // new_node->ex = v;
-          new_node->next = temp->next;
-          temp->next = new_node;
-        }
-        break;
-      default:
-        printf("Invalid choice");
-        break;
+      struct node *temp = start;
+      while (temp->next != NULL && i != pos - 1) {
+        temp = temp->next;
+        i++;
       }
+      new_node->next = temp->next;
+      temp->next = new_node;
     }
+    break;
+  default:
+    printf("Invalid choice\n");
+    free(new_node); // Free the unused node
+    break;
   }
   return 0;
 }
-
 int delete() {
 
   struct node *temp = start;
@@ -510,8 +502,8 @@ int addArr() {
 }
 
 int multiplyArr() {
-  for (int i = 0; i < MAX_EXP; i++) {
-    for (int j = 0; j < MAX_EXP; j++) {
+  for (int i = MAX_EXP - 1; i >= 0; i--) {
+    for (int j = MAX_EXP - 1; j >= 0; j--) {
       result_arr[i + j] += poly1_arr[i] * poly2_arr[j];
     }
   }
@@ -546,9 +538,13 @@ void convertToArray(struct node *poly, int poly_arr[MAX_EXP]) {
 }
 
 void reset_arrays() {
+  // Reset the input arrays
   for (int i = 0; i < MAX_EXP; i++) {
     poly1_arr[i] = 0;
     poly2_arr[i] = 0;
+  }
+  // Reset the larger result array
+  for (int i = 0; i < MAX_EXP * 2; i++) {
     result_arr[i] = 0;
   }
 }
@@ -793,7 +789,7 @@ int main() {
       wizard_mode = true;
       start = NULL;
       end = NULL;
-      printf("enter the polynomial 1 :");
+      printf("enter the polynomial 1 :\n");
       choice = 1;
       while (choice) {
         insert();
@@ -805,7 +801,7 @@ int main() {
       // for array
       start = NULL;
       end = NULL;
-      printf("enter the polynomil 2 :");
+      printf("enter the polynomil 2 :\n");
       choice = 1;
       while (choice) {
         insert();
