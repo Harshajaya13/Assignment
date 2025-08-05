@@ -19,15 +19,14 @@ list now the pop it is like we have to give the temp as the top, as we will move
 the top and delete the temp so we have to store the value of the temp somewere
 else cause we need to pop the values out and then we use in the below considered
 
-the reason for the bracket chnager is, suppose the question is the {[a+b] -
-(c*d)} here what is happening is normally we ignore the brackets as we consider
+the reason for the bracket chnager is, suppose the question is the {[a+b] *
+(c-d)} here what is happening is normally we ignore the brackets as we consider
 them that there are no {} and [] in the operation but if we do that then it
-would be a +b - result consider the result is the value of the c*d though here
-it is same, but it gives us wrong answer when it comes to sign change so better
-writing the function so that it will guve an extra kayer of safety
-
-as you know the precedence
-now comes to the main function it is the main part
+will cause some errors like if we ignore them then
+a + b *(c-d) that means it wont multiply with the sum of the a and b , it only
+multiplies with the b itself so it is a bug itself, thats why converting is far
+better than doing normally as you know the precedence now comes to the main
+function it is the main part
 
 the infix and the postfix is the string and then we have to take the infix
 equation and then we can read the values of the individual if it is the char
@@ -43,6 +42,13 @@ are over then it is like pop the remaining ones and then push to the postfix
 after the more priority ones have gone in the end we have to add the '\0' so
 that garbage values dont enter and the stack wont overflow due to the buffering
 print postfix
+
+harshavardhan13@harsha:~/Assignments$ nv infix.c
+harshavardhan13@harsha:~/Assignments$ gcc infix.c
+harshavardhan13@harsha:~/Assignments$ ./a.out
+enter the expression {[a+b]*(c-d)}
+postfix: {ab+[cd-*]}
+see if i dont convert that it would be like this
 
 */
 
