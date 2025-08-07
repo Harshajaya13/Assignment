@@ -13,7 +13,9 @@ then it will skip the 1 2 indexs to search for*/
 
 burst time means how much time the process needs to complete the starts
  time quantum means how much time the cpu gives for every process
-
+ the reason is that, we have to use this is, we are using the rem bt which is a
+variable that changes in the body, so better taking the values into the rem bt
+:
 */
 #include <stdio.h>
 #define MAX 30
@@ -79,5 +81,75 @@ void search() {
 
   if (!found)
     printf("Not found.\n");
+}
+
+int main() {
+  int num_processes, time_quantum;
+  int time = 0;
+
+  struct process plist[MAX_PRO];
+  printf("Enter the total number of processes: ");
+  scanf("%d", &num_processes);
+
+  printf("Enter the time quantum: ");
+  scanf("%d", &time_quantum);
+
+  for (int i = 0; i < num_processes; i++) {
+    printf("Enter the Burst Time for process %d: ", i + 1);
+    scanf("%d", &plist[i].burst_time);
+    plist[i].pid = i + 1;
+    plist[i].rem_bt = plist[i].burst_time;
+    plist[i].waiting_time = 0;
+    plist[i].turnaround_time = 0;
+    // the reason is that, we have to use this is, we
+    // are using the rem bt which is a variable that
+    // chnages in the body, so better taking the values
+    // into the rem bt
+    enqueue(i);
+  }
+
+  while (f != -1) {
+
+    int process_index = dequeue();
+
+    if (plist[process_index].rem_bt <= time_quantum) {
+      time += plist[process_index].rem_bt;
+      plist[process_index].turnaround_time = time;
+      plist[process_index].waiting_time =
+          time - plist[process_index].burst_time;
+      // initially time =0, and the rem_bt
+      // is equal to the burst time only
+      printf("Process %d ran for %dms and COMPLETED.\n",
+             plist[process_index].pid, plist[process_index].rem_bt); //
+      plist[process_index].rem_bt = 0; // this shows that process is completed
+
+    } else {
+      time += time_quantum;
+      // this means the time it takes is more than the
+      // time allocated by the cpu,here the time is taken
+      // 5 sec
+      plist[process_index].rem_bt -= time_quantum;
+      // the reason is that,we already know that it has burst
+      // time of x ms and we have to remove the time quantum
+      // , so that we can get the remaining time
+      printf("Process %d ran for %dms. Remaining: %dms\n",
+             plist[process_index].pid, time_quantum,
+             plist[process_index].rem_bt);
+      enqueue(process_index);
+      // as this is more time consuming  push to the
+      // queue and then move the next one
+    }
+  }
+
+  printf("PID\tBurst Time\tTurnaround Time\tWaiting Time\n");
+  for (i = 0; i < num_processes; i++) {
+    printf("%d\t%d\t\t%d\t\t%d\n", plist[i].pid, plist[i].burst_time,
+           plist[i].turnaround_time, plist[i].waiting_time);
+    int total_turnaround_time, total_waiting_time;
+    total_turnaround_time += plist[i].turnaround_time;
+    total_waiting_time += plist[i].waiting_time;
+  }
+  printf("\nAll processes have been completed.\nTotal time taken : %d", time);
+  return 0;
 }
 
