@@ -116,7 +116,7 @@ int main() {
     } else if (e == ')') {
       while (start != NULL && start->data != '(') {
         postfix[j++] = pop();
-        postfix[j++] = ' '; // FIX 2: Add a space after every popped operator
+        postfix[j++] = ' ';
       }
       if (start != NULL) {
         pop(); // Pop the '('
