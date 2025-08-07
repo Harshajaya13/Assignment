@@ -1,3 +1,29 @@
+/*
+  SPACE AND TIME COMPLEXITY
+  ➕ Addition of Two Polynomials:
+  1. Using Linked Lists:
+     - Time Complexity  : O(m + n)
+     - Space Complexity : O(m + n)
+     - (m and n are the number of terms in poly1 and poly2)
+
+  2. Using Arrays:
+     - Time Complexity  : O(MAX_EXP)
+     - Space Complexity : O(MAX_EXP)
+     - (MAX_EXP is the maximum exponent size, predefined as 1000)
+
+  ✖️ Multiplication of Two Polynomials:
+
+  3. Using Linked Lists:
+     - Time Complexity  : O(m * n)
+     - Space Complexity : O(m * n)
+     - (Each term in poly1 is multiplied with every term in poly2)
+
+  4. Using Arrays:
+     - Time Complexity  : O(MAX_EXP^2)
+     - Space Complexity : O(MAX_EXP * 2)
+     - (Nested loop over all possible exponent combinations)
+
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX_EXP 1000
